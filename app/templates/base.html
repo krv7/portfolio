@@ -1,0 +1,65 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}
+    {% if title %}{{ title }} - Microblog{% else %}Welcome to Microblog{% endif %}
+{% endblock %}
+
+{% block styles %}
+{{ super() }}
+<style>
+    :root{
+      --primary: #1E6985;
+      --secondary: #D15A75;
+      --other: #D1C830;
+      --terciary: #45ACD1;
+    }
+    nav {
+      border-bottom: 1px solid rgba(53, 46, 46, 0.2);
+    }
+    header {
+      background-image: url("../static/portada.jpg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: fixed;
+      width: 100%;
+    }
+    .nav-link,.navbar-brand {
+      color: white!important;
+    }
+        
+</style>
+{% endblock %}
+
+{% block navbar %}
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light transparent pl-5 pr-5">
+    <a class="navbar-brand" href="#">KEVIN REYES</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Pricing</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  {% endblock %}
+</header>
+{% block content %}
+    <div class="container">
+        {# application content needs to be provided in the app_content block #}
+    </div>
+    {% block app_content %}{% endblock %}
+{% endblock %}

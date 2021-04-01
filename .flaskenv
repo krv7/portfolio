@@ -1,0 +1,2 @@
+FLASK_APP=kevinds.py
+FLASK_ENV=development
