@@ -1,16 +1,52 @@
 {% extends "base.html" %}
+{% block styles_base%}
+{{ super() }}
+{% endblock %}
 
 {% block app_content %}
-    probando
-    <!-- <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="{{url_for('static', filename='portada.jpg')}}" class="d-block w-100"/>
+    <div class="bprimary mt-4 pb-5">
+        <div class="container-2 pr-md-5 pl-md-5 pr-4 pl-4 pt-4 pb-4">
+            <h1 class="mb-4 mt-4" >About me</h1>
+            <div class="d-flex justify-content-around mb-4 flex-column flex-lg-row align-items-center">
+                <div class="icon1 mb-2">
+                    <img style="height: 150px;width: 150px;" src="{{ url_for('static',filename='icon1.svg') }}"/>
+                </div>
+                <div class="icon2 mb-2">
+                    <img style="height: 150px;width: 150px;" src="{{ url_for('static',filename='icon2.png') }}"/>
+                </div>
+                <div class="icon3">
+                    <img style="height: 150px;width: 150px;" src="{{ url_for('static',filename='icon3.svg') }}"/>
+                </div>
+            </div>
+            <p class="paragraph-dark">
+                Hello, I'm Kevin! I'm currently studying Computer Science at Universidad Federico Santa María in Valparaíso, Chile. Without a doubt, one of the best decisions I have made in my life is to enter to study this career, I love it more everyday. There were many areas that interested me, however, the one that touched my heart was Data Science, <b>I feel a great satisfaction when I see that an intangible good is contributing so much to social growth.</b> <br>
+                Another thing that caught my attention was the transversality of this area of knowledge, about the latter I usually play music, my favorite musical instrument is the saxophone, I enjoy feeling that my body is one with it, I feel the music when I play it. Nevertheless, in the last two years I have been practicing quite a bit of fingerstyle guitar and piano. A few years ago I invested one year of self-study in music theory, and since then I have put the theory into practice in the 3 instruments, I usually reuse the licks that I have created in one in the rest of the instruments, lately I have been using the scale of blues and some greek modes. My favorite styles of music are classical and jazz, I really enjoy listening to Debussy when I work or study. Generally, in my social networks I follow popularizers of a variety of topics such as, technology, medicine, astronomy, economy, neuroscience, biology, music, politics, physics, math and in general, science. <b>I enjoy learning new things all the time</b>, and everytime I explore a new topic I see multiple possible applications of data science.<br>
+                As you have seen on the website I associate data science with what a detective does, looking at small details and patterns can add great value to complex problem solving, <b>we certainly do not have the super skills of Sherlock Holmes, but if we ask the right questions with the help of a good algorithm we can find those little details that answer big questions!</b><br>
+                Finally, I've been learning english for 3 years, I've decided to write everything in this portfolio in English to test my skills, in advance I apologize for my possible mistakes.
+            </p>
         </div>
+    </div>
+    <div class="bsecondary pt-5 pb-5">
+        <div class="container-2 pr-md-5 pl-md-5 pr-4 pl-4 pt-4 pb-4">
+            <h1 class="mb-4">My Proffesional Interests</h1>
+            <div class="d-flex justify-content-around mb-4 flex-column flex-lg-row align-items-center">
+                <div class="icon1 mb-2">
+                    <img style="height: 150px;width: 150px;" src="{{ url_for('static',filename='icon4.png') }}"/>
+                </div>
+                <div class="icon2 mb-2">
+                    <img style="height: 150px;width: 150px;" src="{{ url_for('static',filename='icon5.png') }}"/>
+                </div>
+                <div class="icon3">
+                    <img style="height: 150px;width: 150px;" src="{{ url_for('static',filename='icon6.svg') }}"/>
+                </div>
+            </div>
+            <p class="paragraph-dark">
+                I want to be a great Data Scientist and take part in the fourth industrial revolution, the information age. For now I'm interested in Natural language processing and data governance, I think there are many things to define in the process of implementing AI in the societies of the world, <b>we must agree and resolve many ethical issues before we are able to implement the AI in our lives in a effective way.</b> <br>
+                As I like to study, a large part of my dreams have been related to learning, many of them have already been fulfilled, however, many more have not yet. After I finish my university degree I'd like to study a postgraduate degree at one of the best universities in my area, this is so difficult, but I have always thought that <b>with effort and perseverance we can achieve any dream we have</b>. Another of my goals is to work in one of the big technology companies and thus obtain experience in the quality of the process and team work of these companies.<br>
+                When I work in a team I always look at the soft and technical skills of my co-workers and what they enjoy doing. <b>What satisfies me the most when leading a team is guiding each member to do what they enjoy the most while using their skills to the fullest</b>, it's really satisfying to see a team working excitedly to achieve a common goal. <br>
+                I want to achieve a leadership position <b>in a company that contributes to the social and economic development of my country</b>, I think it's a great opportunity to be a potential agent of change and thus improve the quality of life of my compatriots.
+                Finally, I keep looking for needs (opportunities) to start my own Start-up and contribute directly to people.
+            </p>
         </div>
-    </div> -->
-    <h1>Hi, {{ user.username }}!</h1>
-    {% for post in posts %}
-    <div><p>{{ post.author.username }} says: <b>{{ post.body }}</b></p></div>
-    {% endfor %}
+    </div>
 {% endblock %}

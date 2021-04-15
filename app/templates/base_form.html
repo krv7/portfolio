@@ -1,0 +1,46 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}
+    Kevin Reyes Portfolio
+{% endblock %}
+
+{% block styles %}
+{{ super() }}
+<script src="https://kit.fontawesome.com/fbfcb85872.js" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Cabin&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet"> 
+<style>
+    :root{
+      --primary: #f6f6f6;
+      --secondary: #D15A75;
+      --other: #D1C830;
+      --terciary: #45ACD1;
+      --text-primary: #303030;
+      --text-secondary: #aaaaaa;
+    }
+    .descript-form{
+      height: 100px;
+      width: 80vw;
+    }
+    .content-form {
+      height: 500px;
+      width: 80vw;
+      text-align: start;
+      font-family: Arial, Helvetica, sans-serif;
+      letter-spacing: 1px;
+      font-size: 29px;
+      word-wrap: break-word;
+      word-break: break-all;
+    }
+</style>
+{% block styles_base%}{% endblock %}
+{% endblock %}
+
+{% block navbar %}
+{% endblock %}
+{% block content %}
+  {% block app_content %}{% endblock %}
+{% endblock %}
+

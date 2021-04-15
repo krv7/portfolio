@@ -1,0 +1,36 @@
+{% extends "base_form.html" %}
+{% block styles_base%}
+{{ super() }}
+    <style>
+    </style>
+{% endblock %}
+
+{% block app_content %}
+<div class="container mt-5">
+    <h1>Create Project</h1>
+    <form action="{{root+'/api/add_project'}}" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.title.label }}<br>
+            {{ form.title }}
+        </p>
+        <p>
+            {{ form.description.label }}<br>
+            {{ form.description(class_="descript-form")}}
+        </p>
+        <p>
+            {{ form.content.label }}<br>
+            {{ form.content(class_="content-form") }}
+        </p>
+        <p>
+            {{ form.cat.label }}<br>
+            {{ form.cat }}
+        </p>
+        <p>
+            {{ form.image.label }}<br>
+            {{ form.image }}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+</div>
+{% endblock %}

@@ -1,65 +1,345 @@
 {% extends 'bootstrap/base.html' %}
 
+{% block metas %}
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23269eeb%22></rect><text x=%2250%%22 y=%2250%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%2275%22>🔍</text></svg>" />
+{% endblock metas %}
 {% block title %}
-    {% if title %}{{ title }} - Microblog{% else %}Welcome to Microblog{% endif %}
-{% endblock %}
+  Kevin Reyes Portfolio
+{% endblock title %}
 
 {% block styles %}
 {{ super() }}
+<script src="https://kit.fontawesome.com/fbfcb85872.js" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Cabin&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet"> 
+<!-- <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">  -->
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@500&display=swap" rel="stylesheet"> 
+<link rel="stylesheet" href="{{ url_for('static', filename='/css/prism.css') }}">
+<script src="{{ url_for('static', filename='/js/prism.js') }}"></script>
 <style>
     :root{
-      --primary: #1E6985;
+      --primary: #fdfdfd;
       --secondary: #D15A75;
       --other: #D1C830;
       --terciary: #45ACD1;
+      --text-primary: #303030;
+      --text-secondary: #aaaaaa;
     }
+
     nav {
-      border-bottom: 1px solid rgba(53, 46, 46, 0.2);
+      border-bottom: 3px solid rgba(53, 46, 46, 0.2);
+      border-image-slice: 1;
+      border-image-source: linear-gradient(to left, #269EEB, #EBBD1A);
     }
+
+    b {
+      background: -webkit-linear-gradient(right,#269EEB, #EBBD1A);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
     header {
-      background-image: url("../static/portada.jpg");
-      background-position: center;
+      background-image: url("{{ url_for('static', filename=background_url)}}");
+      height: 65vh;
       background-repeat: no-repeat;
-      background-size: cover;
-      position: fixed;
+      background-position: center;
+      background-size: contain;
       width: 100%;
+      position: relative;
+    }
+    p {
+      text-align: justify;
+    }
+    .cont-img{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+    .container-2 {
+      width: 100%;
+      margin: auto;
+    }
+    .bprimary {
+      background-color: var(--primary);
+    }
+    .bsecondary {
+      background-color: #ffffff;
+    }
+    h1 {
+        font-size: 50px;
+        font-family: 'Fjalla One', sans-serif;
+        color: var(--text-primary);
+        text-align: center;
+    }
+    .paragraph-light {
+        color: white;
+        font-family: 'Lora', serif;
+        font-size: 40px;
+    }
+    .paragraph-dark {
+      color: var(--text-primary);
+      font-family: 'Lora', serif;
+      font-size: 20px;
     }
     .nav-link,.navbar-brand {
+      /* color: rgb(160, 139, 139)!important; */
+      color: black;
+    }
+    .nav{
+      padding:0px!important;
+    }
+    .nav-link {
+      font-family: 'Cabin', sans-serif;
+      /* color: #e1e1e1!important; */
       color: white!important;
     }
-        
+    .nav-item {
+      border-bottom: 1px solid #e1e1e1;
+      padding-left: 25px;
+    }
+
+    .nav-link:hover{
+      transition: all 0.4s ease;
+      border-radius: 5%;
+    }
+    #link-1:hover {
+      background-color: #EBBD1A;
+    }
+    #link-2:hover {
+      background-color: #84ad88;
+    }
+    #link-3:hover {
+      background-color: #269EEB;
+    }
+    .navbar-brand {
+      font-family: 'Cabin', sans-serif;
+      font-size: 30px!important;
+    }
+
+    #title{
+      position:relative;
+      width: 100%;
+      height: 100%;
+      top: 20%;
+      right: 3%;
+      font-family: 'Fjalla One', sans-serif;
+    }
+    #title-h1 {
+      font-size: 25px;
+      text-align: end;
+    }
+    #navbarNav{
+      position:absolute;
+      top: 70px;
+      right:0;
+      left:0;
+      width: 100vw!important;
+      background-color: rgba(0, 0, 0, 0.739);
+      z-index: 2;
+    }
+    .linkedin {
+      display: flex!important;
+      justify-content:start!important;
+    }
+    #linked {
+      fill: #0a66c2;
+      position:absolute;
+    }
+    #link-b-1:hover {
+      background-color: #EBBD1A;
+    }
+    #link-b-2:hover {
+      background-color: #84ad88;
+    }
+    #link-b-3:hover {
+      background-color: #269EEB;
+    }
+
+
+    @media only screen and (min-width: 768px) {
+      header {
+        background-size:cover;
+        height: 92vh;
+        background-position: 0 50px;
+      }
+      #title-h1 {
+        font-size: 40px;
+      }
+    }
+    @media only screen and (min-width: 992px) {
+      .container-2 {
+        width: 60%;
+        margin: auto;
+      }
+      p {
+        text-align: start;
+      }
+      .nav-link {
+        color: black!important;
+      }
+      .nav-item {
+        border:none;
+      }
+      #navbarNav{
+        margin-right: 50px;
+        background-color: transparent;
+        top:0px;
+        position: relative;
+      }
+      #title{
+        position:relative;
+        width: 100%;
+        height: 100%;
+        top: 20%;
+        right: 170px;
+        font-family: 'Fjalla One', sans-serif;
+      }
+      
+      .linkedin {
+        display:flex;
+        position: relative!important;
+      }
+      #link-b-1:hover {
+        background-color: transparent;
+      }
+      #link-b-2:hover {
+        background-color: transparent;
+      }
+      #link-b-3:hover {
+        background-color: transparent;
+      }
+      #link-1:hover {
+      background-color: #EBBD1A;
+      }
+      #link-2:hover {
+        background-color: #84ad88;
+      }
+      #link-3:hover {
+        background-color: #269EEB;
+      }
+    }
+
+    /* BLOG y PORTFOLIO */
+    .entry-title{
+      background-color: white;
+      color:#007bff;
+      padding: 0;
+      margin: 0;
+      border: none;
+    }
+
 </style>
-{% endblock %}
+{% if not dark: %}
+  <style>
+    #blur{
+      background-color: rgba(0, 0, 0, 0.3);
+      width: 100%;
+      position:absolute;
+      height: 100%;
+    }
+    header{
+      background-size: cover;
+      background-position: center;
+    }
+    h1 {
+        color: white;
+    }
+    .nav-link,.navbar-brand {
+      /* color: rgb(160, 139, 139)!important; */
+      color: white!important;
+    }
+    #title{
+      position:relative;
+      display: flex;
+      align-items: center;
+      max-height: 85%!important;
+      top: 0px!important;
+      left:0px!important;
+      right:0px!important;
+      bottom: 0px!important;
+      text-align: center!important;
+      width: 100%;
+      font-family: 'Fjalla One', sans-serif;
+    }
+    #title-h1{
+      text-align: center;
+      width: 100%;
+      font-size: 80px;
+    }
+  </style>
+{% endif %}
+{% block styles_base%}{% endblock %}
+{% endblock styles %}
+
 
 {% block navbar %}
 <header>
-  <nav class="navbar navbar-expand-lg navbar-light transparent pl-5 pr-5">
-    <a class="navbar-brand" href="#">KEVIN REYES</a>
+  <div id="blur"></div>
+  {% if dark:%}
+    <nav class="navbar navbar-expand-lg navbar-light transparent pl-lg-5 pr-lg-5">
+  {% else: %}
+    <nav class="navbar navbar-expand-lg navbar-dark transparent pl-lg-5 pr-lg-5">
+  {% endif %}
+    <a class="navbar-brand" href="{{url_for('index')}}">KEVIN REYES</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <li id="link-b-1" class="nav-item active">
+          <a class="nav-link" id="link-1" href="{{url_for('portfolio')}}">PORTFOLIO <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
+        <li id="link-b-2" class="nav-item">
+          <a class="nav-link" id="link-2" href="{{url_for('blog')}}">BLOG</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        <li id="link-b-3" class="nav-item">
+          <a class="nav-link linkedin" id="link-3" target="_blank" href="https://www.linkedin.com/in/kevin-reyes-cs/"><div style="margin-right: 5px;">LINKEDIN</div> <div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path id="linked" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></div></a>
+          
         </li>
       </ul>
     </div>
   </nav>
-  {% endblock %}
+  <div id="title">
+    <h1 id="title-h1">{{title}}</h1>
+  </div>
 </header>
-{% block content %}
-    <div class="container">
-        {# application content needs to be provided in the app_content block #}
-    </div>
-    {% block app_content %}{% endblock %}
 {% endblock %}
+{% block content %}
+  {% block app_content %}{% endblock %}
+
+  <footer class="bg-dark text-center text-white">
+    <!-- Grid container -->
+    <div class="container p-4 pb-0">
+      <!-- Section: Social media -->
+      <section class="mb-4">
+
+        <!-- Instagram -->
+        <a class="btn btn-outline-light btn-floating m-1" target="_blank" href="https://www.instagram.com/kevin_reyescs/" role="button"
+          ><i class="fab fa-instagram"></i
+        ></a>
+  
+        <!-- Linkedin -->
+        <a class="btn btn-outline-light btn-floating m-1" target="_blank" href="https://www.linkedin.com/in/kevin-reyes-cs/" role="button"
+          ><i class="fab fa-linkedin-in"></i
+        ></a>
+  
+        <!-- Github -->
+        <a class="btn btn-outline-light btn-floating m-1" target="_blank" href="https://gitlab.labcomp.cl/kreyes" role="button"
+          ><i class="fab fa-gitlab"></i
+        ></a>
+      </section>
+      <!-- Section: Social media -->
+    </div>
+    <!-- Grid container -->
+  
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2021 Copyright:
+      <a class="text-white" href="https://mdbootstrap.com/">Kevin Reyes</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+{% endblock %}
+

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block styles_base%}
+{{ super() }}
+    <style>
+    </style>
+{% endblock %}
+
+{% block app_content %}
+    <div class="bsecondary mt-5 pt-5 pb-5">
+        <div class="container-2 pr-5 pl-5 pt-4 pb-4">
+            <h1 class="mb-5" style="color:black;">{{entry.description}}</h1>
+            {% if split_content|length>1: %}
+                {% for i in range(0,split_content|length,2):%}
+                    <p class="text-justify paragraph-dark">{{ split_content[i] }}</p>
+                    <div class="cont-img mt-5 mb-5"><img src="{{ url_for('static',filename=split_content[i+1]) }}" alt="" style="height: auto;width:90%; object-fit: cover; display: block;"></img></div>
+                {% endfor %}
+            {% else %}
+                <p class="text-justify paragraph-dark">{{ split_content[0] }}</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
